@@ -1,43 +1,38 @@
 import { useState } from "react";
-
+import Hello from "./Hello"
+ 
 function Counter() {
   const [result, setResult] = useState(0);
-  const [multiplier, setMultiplier] = useState(1);
+  const [changeValue, setChangeValue] = useState(1);
 
-  function addOne() {
-    console.log("Funkcija izsaukta");
-    setResult(result + 1);
-    console.log("x vērtība ir " + result);
+  function handleOperation(operation) {
+    if (operation === "add") {
+      setResult(result + changeValue);
+    } else if (operation === "subtract") {
+      setResult(result - changeValue);
+    } else if (operation === "multiply") {
+      setResult(result * changeValue);
+    }
   }
 
-function minusOne() {
-  setResult(result - 1);
-}
-
-
-  function multiply() {
-    setResult(result * multiplier);
-  }
-
-  function handleChange(kakens) {
-    setMultiplier(kakens.target.value);
+  function handleChange(event) {
+    setChangeValue(parseInt(event.target.value, 10));
   }
 
   return (
     <div>
-      <button onClick={addOne}>+ 1</button>
-      <button onClick={minusOne}>- 1</button>
-      <input  onChange = {handleChange} type="number" value={multiplier}/>
-      <button onClick={() => multiply()}>*</button>
-  <h1>{result}</h1>
+      <input
+        type="number"
+        value={changeValue}
+        onChange={handleChange}
+      />
+      <button onClick={() => handleOperation("add")}>+ {changeValue}</button>
+      <button onClick={() => handleOperation("subtract")}>- {changeValue}</button>
+      <button onClick={() => handleOperation("multiply")}>* {changeValue}</button>
+      <h1>{result}</h1>
+      <Hello />
     </div>
   );
 }
 
-
-
-
 export default Counter;
-
-
-
