@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-function Hello() {
-    const [name, setName] = useState("");
+function Hello(props) {
+    const [name, setName] = useState(props.name);
 
     function handleChange(event) {
       setName(event.target.value);
@@ -11,12 +11,13 @@ function Hello() {
       <div>
         <input
           type="text"
-          placeholder="Ievadi savu vardu"
+          value = {name}
           onChange={handleChange}
         />
         <p>Hello, {name}!</p>
       </div>
     );
   }
+  
 
   export default Hello;

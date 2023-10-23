@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Hello from "./Hello"
  
-function Counter() {
-  const [result, setResult] = useState(0);
-  const [changeValue, setChangeValue] = useState(1);
+function Counter(props) {
+  const [result, setResult] = useState(props.value);
+  const [changeValue, setChangeValue] = useState(0);
 
   function handleOperation(operation) {
     if (operation === "add") {
@@ -30,9 +30,32 @@ function Counter() {
       <button onClick={() => handleOperation("subtract")}>- {changeValue}</button>
       <button onClick={() => handleOperation("multiply")}>* {changeValue}</button>
       <h1>{result}</h1>
-      <Hello />
     </div>
   );
 }
 
 export default Counter;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
